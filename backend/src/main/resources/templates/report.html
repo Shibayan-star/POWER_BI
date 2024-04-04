@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Power BI Report</title>
+</head>
+<body>
+<!-- Thymeleaf expressions can be used to embed dynamic data -->
+<script th:inline="javascript">
+    var config = {
+        type: 'report',
+        tokenType: [[${tokenType}]],
+        accessToken: [[${accessToken}]],
+        embedUrl: [[${embedUrl}]],
+        permissions: [[${permissions}]],
+        viewMode: [[${viewMode}]],
+        filterPaneEnabled: [[${filterPaneEnabled}]],
+        useCustomSaveAsDialog: [[${useCustomSaveAsDialog}]]
+        // ... other attributes
+    };
+    var $reportContainer = $('#reportContainer');
+    var report = powerbi.embed($reportContainer.get(0), config);
+</script>
+</body>
+</html>
